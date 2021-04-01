@@ -1,8 +1,8 @@
-boss_i_radius = 1.5;
+boss_i_radius = 1.75;
 boss_e_radius = 3;
 h_space = 60;
 v_space = 30;
-boss_height = 20;
+boss_height = 12;
 
 boss_rows = 2;
 boss_columns = 2;
@@ -14,7 +14,7 @@ difference() {
       for(h = [0:1:boss_columns-1]) {
           translate([h_space*h,v_offset,0]) {
             if(h!=boss_columns-1){
-              translate([0,0,-boss_height/2]) {
+              translate([0,-1,-boss_height/2]) {
                 if(v%2 == 1) {
                   rotate(-90+atan(h_space/v_space)){
                     cube([sqrt(h_space*h_space+v_space*v_space),2,5], center=false);
@@ -26,7 +26,7 @@ difference() {
                  }
                }
              }
-            cylinder($fn=12,h=boss_height, r1=boss_e_radius+3, r2=boss_e_radius, center=true);
+            cylinder($fn=12,h=boss_height, r1=boss_e_radius+1, r2=boss_e_radius, center=true);
           }
       }
     }
